@@ -1,453 +1,499 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INCLUYE-VES</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orientación accesible sobre trámites ciudadanos para adultos mayores y personas con discapacidad.">
+    <title>INCLUYE-VES</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <style>
+        :root {
+            --azul: #2457a7;
+            --azul-oscuro: #173d79;
+            --dorado: #ffc078;
+            --fondo: #f2f5fa;
+            --texto: #26344a;
+            --blanco: #ffffff;
+            --contraste-fondo: #000000;
+            --contraste-panel: #151515;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f5fa;
-    color: #26344a;
-    font-size: 17px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-header {
-    background: #2457a7;
-    color: white;
-    padding: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--fondo);
+            color: var(--texto);
+            font-size: 17px;
+            line-height: 1.5;
+        }
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-}
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
 
-.logo span {
-    color: #ffc078;
-}
+        .skip-link:focus {
+            left: 10px;
+            top: 10px;
+            z-index: 1000;
+            background: var(--blanco);
+            color: var(--azul);
+            padding: 10px;
+            border: 3px solid orange;
+            border-radius: 6px;
+        }
 
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 9px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 4px;
-}
+        header {
+            background: var(--azul);
+            color: var(--blanco);
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-button:focus {
-    outline: 3px solid orange;
-}
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-.accesibilidad button {
-    background: white;
-    color: #2457a7;
-}
+        .logo span {
+            color: var(--dorado);
+        }
 
-.contenedor {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 20px;
-}
+        .subtitulo-logo {
+            font-size: 13px;
+            font-weight: normal;
+        }
 
-.bienvenida {
-    background: white;
-    padding: 40px;
-    border-radius: 18px;
-    text-align: center;
-    margin-bottom: 30px;
-}
+        button,
+        .btn {
+            min-height: 44px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 4px;
+            font-family: inherit;
+        }
 
-.bienvenida h1 {
-    color: #2457a7;
-    font-size: 35px;
-    margin-bottom: 15px;
-}
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid orange;
+            outline-offset: 3px;
+        }
 
-.bienvenida p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
+        .accesibilidad button {
+            background: var(--blanco);
+            color: var(--azul);
+        }
 
-.titulo {
-    color: #2457a7;
-    margin: 25px 0;
-    text-align: center;
-}
+        .contenedor {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
 
-.tarjetas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
+        .bienvenida {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-.tarjeta {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 3px 10px #00000012;
-}
+        .bienvenida h1 {
+            color: var(--azul);
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
 
-.tarjeta .icono {
-    font-size: 45px;
-}
+        .bienvenida p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
 
-.tarjeta h3 {
-    margin: 15px 0;
-}
+        .titulo {
+            color: var(--azul);
+            margin: 25px 0;
+            text-align: center;
+        }
 
-.tarjeta p {
-    margin-bottom: 15px;
-    line-height: 1.5;
-}
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
-.btn {
-    background: #2457a7;
-    color: white;
-}
+        .tarjeta {
+            background: var(--blanco);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px #00000012;
+        }
 
-.btn:hover {
-    background: #173d79;
-}
+        .tarjeta .icono {
+            font-size: 45px;
+        }
 
-#resultado {
-    display: none;
-    background: white;
-    padding: 25px;
-    margin-top: 25px;
-    border-radius: 15px;
-    line-height: 1.8;
-}
+        .tarjeta h3 {
+            margin: 15px 0;
+        }
 
-#resultado h2 {
-    color: #2457a7;
-    margin-bottom: 15px;
-}
+        .tarjeta p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
 
-.paso {
-    margin: 12px 0;
-}
+        .btn {
+            background: var(--azul);
+            color: var(--blanco);
+            display: inline-block;
+            text-decoration: none;
+        }
 
-footer {
-    background: #2457a7;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-}
+        .btn:hover {
+            background: var(--azul-oscuro);
+        }
 
-.alto-contraste {
-    background: black;
-    color: white;
-}
+        #resultado {
+            display: none;
+            background: var(--blanco);
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 15px;
+            line-height: 1.8;
+        }
 
-.alto-contraste .tarjeta,
-.alto-contraste .bienvenida,
-.alto-contraste #resultado {
-    background: #151515;
-    color: white;
-}
+        #resultado h2 {
+            color: var(--azul);
+            margin-bottom: 15px;
+        }
 
-.alto-contraste h1,
-.alto-contraste h2,
-.alto-contraste h3 {
-    color: yellow;
-}
+        .paso {
+            margin: 12px 0;
+        }
 
-@media(max-width: 750px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
+        .importante {
+            margin-top: 18px;
+        }
 
-    .tarjetas {
-        grid-template-columns: 1fr;
-    }
+        footer {
+            background: var(--azul);
+            color: var(--blanco);
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
 
-    .bienvenida {
-        padding: 25px;
-    }
-}
-</style>
+        .asistente {
+            margin-top: 30px;
+        }
+
+        #respuestaAsistente {
+            min-height: 24px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .alto-contraste {
+            background: var(--contraste-fondo);
+            color: var(--blanco);
+        }
+
+        .alto-contraste .tarjeta,
+        .alto-contraste .bienvenida,
+        .alto-contraste #resultado {
+            background: var(--contraste-panel);
+            color: var(--blanco);
+        }
+
+        .alto-contraste h1,
+        .alto-contraste h2,
+        .alto-contraste h3 {
+            color: yellow;
+        }
+
+        .alto-contraste .btn {
+            background: yellow;
+            color: black;
+        }
+
+        @media (max-width: 750px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+            .bienvenida {
+                padding: 25px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#contenido">Ir al contenido principal</a>
 
-<header>
-    <div class="logo">
-        ♿ INCLUYE <span>VES</span>
-        <div style="font-size:13px;font-weight:normal">
-            Trámites ciudadanos para todos
+    <header>
+        <div class="logo">
+            ♿ INCLUYE <span>VES</span>
+            <div class="subtitulo-logo">Trámites ciudadanos para todos</div>
         </div>
-    </div>
 
-    <div class="accesibilidad">
-        <button onclick="cambiarTexto(-1)">A-</button>
-        <button onclick="cambiarTexto(1)">A+</button>
-        <button onclick="contraste()">◐ Contraste</button>
-        <button onclick="leerPagina()">🔊 Escuchar</button>
-    </div>
-</header>
+        <nav class="accesibilidad" aria-label="Opciones de accesibilidad">
+            <button type="button" onclick="cambiarTexto(-1)" aria-label="Disminuir tamaño del texto">A−</button>
+            <button type="button" onclick="cambiarTexto(1)" aria-label="Aumentar tamaño del texto">A+</button>
+            <button type="button" id="botonContraste" onclick="contraste()" aria-pressed="false">◐ Contraste</button>
+            <button type="button" onclick="leerPagina()">🔊 Escuchar</button>
+        </nav>
+    </header>
 
-<main class="contenedor">
+    <main id="contenido" class="contenedor">
+        <section class="bienvenida" aria-labelledby="titulo-bienvenida">
+            <h1 id="titulo-bienvenida">¡Bienvenido a INCLUYE VES!</h1>
 
-    <section class="bienvenida">
-        <h1>¡Bienvenido a INCLUYE VES!</h1>
-
-        <p>
-            Una plataforma diseñada para facilitar el acceso
-            a la información y orientación sobre trámites
-            ciudadanos para adultos mayores y personas
-            con discapacidad.
-        </p>
-
-        <p><strong>La tecnología debe estar al alcance de todos.</strong></p>
-
-        <button class="btn"
-        onclick="mostrarAyuda()">
-            Necesito ayuda
-        </button>
-    </section>
-
-    <h2 class="titulo">
-        ¿Qué trámite necesitas consultar?
-    </h2>
-
-    <section class="tarjetas">
-
-        <article class="tarjeta">
-            <div class="icono">🪪</div>
-            <h3>Orientación sobre DNI</h3>
             <p>
-                Conoce los pasos generales para consultar
-                información relacionada con tu DNI.
+                Una plataforma diseñada para facilitar el acceso a la información
+                y orientación sobre trámites ciudadanos para adultos mayores y personas
+                con discapacidad.
             </p>
-            <button class="btn"
-            onclick="mostrarTramite('dni')">
-                Ver pasos
+
+            <p><strong>La tecnología debe estar al alcance de todos.</strong></p>
+
+            <button type="button" class="btn" onclick="mostrarAyuda()">
+                Necesito ayuda
             </button>
-        </article>
+        </section>
 
-        <article class="tarjeta">
-            <div class="icono">🏛️</div>
-            <h3>Trámites municipales</h3>
-            <p>
-                Encuentra orientación para realizar
-                consultas sobre servicios municipales.
-            </p>
-            <button class="btn"
-            onclick="mostrarTramite('municipal')">
-                Ver pasos
-            </button>
-        </article>
+        <h2 class="titulo">¿Qué trámite necesitas consultar?</h2>
 
-        <article class="tarjeta">
-            <div class="icono">📅</div>
-            <h3>Solicitar una cita</h3>
-            <p>
-                Aprende cómo prepararte para solicitar
-                una cita en una entidad.
-            </p>
-            <button class="btn"
-            onclick="mostrarTramite('cita')">
-                Ver pasos
-            </button>
-        </article>
+        <section class="tarjetas" aria-label="Guías de trámites">
+            <article class="tarjeta">
+                <div class="icono" aria-hidden="true">🪪</div>
+                <h3>Orientación sobre DNI</h3>
+                <p>Conoce los pasos generales para consultar información relacionada con tu DNI.</p>
+                <button type="button" class="btn" onclick="mostrarTramite('dni')">Ver pasos</button>
+            </article>
 
-    </section>
+            <article class="tarjeta">
+                <div class="icono" aria-hidden="true">🏛️</div>
+                <h3>Trámites municipales</h3>
+                <p>Encuentra orientación para realizar consultas sobre servicios municipales.</p>
+                <button type="button" class="btn" onclick="mostrarTramite('municipal')">Ver pasos</button>
+            </article>
 
-    <section id="resultado" aria-live="polite">
-        <h2 id="tituloResultado"></h2>
-        <div id="contenidoResultado"></div>
-        <button class="btn" onclick="cerrarResultado()">
-            Cerrar
-        </button>
-    </section>
+            <article class="tarjeta">
+                <div class="icono" aria-hidden="true">📅</div>
+                <h3>Solicitar una cita</h3>
+                <p>Aprende cómo prepararte para solicitar una cita en una entidad.</p>
+                <button type="button" class="btn" onclick="mostrarTramite('cita')">Ver pasos</button>
+            </article>
+        </section>
 
-    <section class="bienvenida" style="margin-top:30px">
-        <h2 class="titulo">Asistente virtual </h2>
+        <section id="resultado" aria-live="polite" aria-labelledby="tituloResultado" tabindex="-1">
+            <h2 id="tituloResultado"></h2>
+            <div id="contenidoResultado"></div>
+            <button type="button" class="btn" onclick="cerrarResultado()">Cerrar</button>
+        </section>
 
-        <p>
-            ¿Necesitas orientación? Selecciona una opción.
-        </p>
+        <section class="bienvenida asistente" aria-labelledby="titulo-asistente">
+            <h2 id="titulo-asistente" class="titulo">Asistente virtual</h2>
+            <p>¿Necesitas orientación? Selecciona una opción.</p>
 
-        <button class="btn"
-        onclick="asistente('lectura')">
-            No puedo leer bien
-        </button>
+            <button type="button" class="btn" onclick="asistente('lectura')">No puedo leer bien</button>
+            <button type="button" class="btn" onclick="asistente('tramite')">No entiendo un trámite</button>
+            <button type="button" class="btn" onclick="asistente('ayuda')">Necesito ayuda personal</button>
 
-        <button class="btn"
-        onclick="asistente('tramite')">
-            No entiendo un trámite
-        </button>
+            <p id="respuestaAsistente" aria-live="polite"></p>
+        </section>
+    </main>
 
-        <button class="btn"
-        onclick="asistente('ayuda')">
-            Necesito ayuda personal
-        </button>
+    <footer>
+        <p>INCLUYE VES</p>
+        <p>Reducción de las desigualdades</p>
+        <p>HackODS UA 2026</p>
+    </footer>
 
-        <p id="respuestaAsistente" style="margin-top:20px"></p>
-    </section>
+    <script>
+        const MIN_FONT_SIZE = 14;
+        const MAX_FONT_SIZE = 27;
+        let tamanio = 17;
 
-</main>
+        const tramites = {
+            dni: {
+                titulo: "Orientación sobre DNI",
+                pasos: [
+                    "Identifica qué trámite relacionado con tu DNI necesitas.",
+                    "Consulta los requisitos en la página oficial de RENIEC.",
+                    "Verifica si necesitas solicitar una cita.",
+                    "Prepara los documentos indicados por la entidad."
+                ]
+            },
+            municipal: {
+                titulo: "Trámites municipales",
+                pasos: [
+                    "Identifica el trámite municipal que necesitas.",
+                    "Consulta los canales oficiales de la Municipalidad de Villa El Salvador.",
+                    "Verifica los requisitos, horarios y costos.",
+                    "Sigue las indicaciones de la entidad."
+                ]
+            },
+            cita: {
+                titulo: "Orientación para solicitar una cita",
+                pasos: [
+                    "Identifica la institución donde necesitas atención.",
+                    "Verifica si requiere una cita previa.",
+                    "Consulta el canal oficial para solicitarla.",
+                    "Guarda la fecha y hora de tu cita."
+                ]
+            }
+        };
 
-<footer>
-    <p>INCLUYE VES </p>
-    <p>Reducción de las desigualdades</p>
-    <p>HackODS UA 2026</p>
-</footer>
+        function cambiarTexto(valor) {
+            tamanio = Math.min(
+                MAX_FONT_SIZE,
+                Math.max(MIN_FONT_SIZE, tamanio + valor)
+            );
 
-<script>
+            document.body.style.fontSize = tamanio + "px";
+        }
 
+        function actualizarContraste(activo) {
+            document.body.classList.toggle("alto-contraste", activo);
 
-let tamanio = 17;
+            const boton = document.getElementById("botonContraste");
+            boton.setAttribute("aria-pressed", activo.toString());
+            localStorage.setItem("altoContraste", activo.toString());
+        }
 
-function cambiarTexto(valor) {
-    tamanio += valor;
+        function contraste() {
+            const activo =
+                document.body.classList.contains("alto-contraste");
 
-    if(tamanio < 14) tamanio = 14;
-    if(tamanio > 27) tamanio = 27;
+            actualizarContraste(!activo);
+        }
 
-    document.body.style.fontSize = tamanio + "px";
-}
+        function leerPagina() {
+            if (!("speechSynthesis" in window)) {
+                alert("Tu navegador no admite lectura por voz.");
+                return;
+            }
 
-function contraste() {
-    document.body.classList.toggle("alto-contraste");
-}
+            speechSynthesis.cancel();
 
+            const texto = document.querySelector("main").innerText;
+            const voz = new SpeechSynthesisUtterance(texto);
 
-function leerPagina() {
-    if (!("speechSynthesis" in window)) {
-        alert("Tu navegador no admite lectura por voz.");
-        return;
-    }
+            voz.lang = "es-PE";
+            speechSynthesis.speak(voz);
+        }
 
-    speechSynthesis.cancel();
+        function mostrarTramite(tipo) {
+            const tramite = tramites[tipo];
 
-    let texto = document.querySelector("main").innerText;
+            if (!tramite) {
+                return;
+            }
 
-    let voz = new SpeechSynthesisUtterance(texto);
+            const resultado = document.getElementById("resultado");
+            const contenido = document.getElementById("contenidoResultado");
 
-    voz.lang = "es-PE";
+            document.getElementById("tituloResultado").textContent =
+                tramite.titulo;
 
-    speechSynthesis.speak(voz);
-}
+            contenido.replaceChildren();
 
+            tramite.pasos.forEach((paso, indice) => {
+                const parrafo = document.createElement("p");
+                parrafo.className = "paso";
 
-function mostrarTramite(tipo) {
+                const etiqueta = document.createElement("strong");
+                etiqueta.textContent = `Paso ${indice + 1}: `;
 
-    let titulo = "";
-    let pasos = [];
+                parrafo.append(etiqueta, paso);
+                contenido.appendChild(parrafo);
+            });
 
-    if(tipo === "dni") {
-        titulo = "Orientación sobre DNI";
+            const importante = document.createElement("p");
+            importante.className = "importante";
 
-        pasos = [
-            "Identifica qué trámite relacionado con tu DNI necesitas.",
-            "Consulta los requisitos en la página oficial de RENIEC.",
-            "Verifica si necesitas solicitar una cita.",
-            "Prepara los documentos indicados por la entidad."
-        ];
-    }
+            const etiqueta = document.createElement("strong");
+            etiqueta.textContent = "Importante: ";
 
-    if(tipo === "municipal") {
-        titulo = "Trámites municipales";
+            importante.append(
+                etiqueta,
+                "Esta es una guía orientativa. Confirma los requisitos vigentes con la institución correspondiente."
+            );
 
-        pasos = [
-            "Identifica el trámite municipal que necesitas.",
-            "Consulta los canales oficiales de la Municipalidad de Villa El Salvador.",
-            "Verifica los requisitos, horarios y costos.",
-            "Sigue las indicaciones de la entidad."
-        ];
-    }
+            contenido.appendChild(importante);
+            resultado.style.display = "block";
+            resultado.focus();
 
-    if(tipo === "cita") {
-        titulo = "Orientación para solicitar una cita";
+            resultado.scrollIntoView({
+                behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+                    .matches
+                    ? "auto"
+                    : "smooth"
+            });
+        }
 
-        pasos = [
-            "Identifica la institución donde necesitas atención.",
-            "Verifica si requiere una cita previa.",
-            "Consulta el canal oficial para solicitarla.",
-            "Guarda la fecha y hora de tu cita."
-        ];
-    }
+        function cerrarResultado() {
+            document.getElementById("resultado").style.display = "none";
+        }
 
-    document.getElementById("tituloResultado").innerText = titulo;
+        function asistente(opcion) {
+            const respuestas = {
+                lectura:
+                    "Puedes aumentar las letras con el botón A+ o escuchar la página con el botón de audio.",
+                tramite:
+                    "Selecciona una de las guías de trámites para recibir instrucciones paso a paso.",
+                ayuda:
+                    "Puedes pedir orientación a una persona de confianza o acudir a los canales oficiales de atención."
+            };
 
-    let contenido = "";
+            document.getElementById("respuestaAsistente").textContent =
+                respuestas[opcion] || "";
+        }
 
-    pasos.forEach((paso, i) => {
-        contenido += `
-            <p class="paso">
-                <strong>Paso ${i+1}:</strong> ${paso}
-            </p>
-        `;
-    });
+        function mostrarAyuda() {
+            document.getElementById("respuestaAsistente").textContent =
+                "¡Estamos para ayudarte! Selecciona una de las opciones del asistente virtual.";
 
-    contenido += `
-        <p><strong>Importante:</strong>
-        Esta es una guía orientativa. Confirma los requisitos
-        vigentes con la institución correspondiente.</p>
-    `;
+            document
+                .getElementById("respuestaAsistente")
+                .scrollIntoView({ behavior: "smooth", block: "center" });
+        }
 
-    document.getElementById("contenidoResultado").innerHTML = contenido;
+        window.addEventListener("beforeunload", () => {
+            speechSynthesis.cancel();
+        });
 
-    document.getElementById("resultado").style.display = "block";
-
-    document.getElementById("resultado").scrollIntoView({
-        behavior: "smooth"
-    });
-}
-
-
-
-function cerrarResultado() {
-    document.getElementById("resultado").style.display = "none";
-}
-
-
-function asistente(opcion) {
-
-    let respuesta = "";
-
-    if(opcion === "lectura") {
-        respuesta = "Puedes aumentar las letras con el botón A+ o escuchar la página con el botón de audio.";
-    }
-
-    if(opcion === "tramite") {
-        respuesta = "Selecciona una de las guías de trámites para recibir instrucciones paso a paso.";
-    }
-
-    if(opcion === "ayuda") {
-        respuesta = "Puedes pedir orientación a una persona de confianza o acudir a los canales oficiales de atención.";
-    }
-
-    document.getElementById("respuestaAsistente").innerText = respuesta;
-}
-
-
-
-function mostrarAyuda() {
-    document.getElementById("respuestaAsistente").innerText =
-    "¡Estamos para ayudarte! Selecciona una de las opciones del asistente virtual.";
-}
-
-</script>
-
+        if (localStorage.getItem("altoContraste") === "true") {
+            actualizarContraste(true);
+        }
+    </script>
 </body>
-</html
+</html>
+```
