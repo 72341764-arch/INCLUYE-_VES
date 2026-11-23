@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INCLUYE VES</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f5fa;
+    color: #26344a;
+    font-size: 17px;
+}
+
+header {
+    background: #2457a7;
+    color: white;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ffc078;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px;
+}
+
+button:focus {
+    outline: 3px solid orange;
+}
+
+.accesibilidad button {
+    background: white;
+    color: #2457a7;
+}
+
+.contenedor {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.bienvenida {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.bienvenida h1 {
+    color: #2457a7;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.bienvenida p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.titulo {
+    color: #2457a7;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tarjeta {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 3px 10px #00000012;
+}
+
+.tarjeta .icono {
+    font-size: 45px;
+}
+
+.tarjeta h3 {
+    margin: 15px 0;
+}
+
+.tarjeta p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.btn {
+    background: #2457a7;
+    color: white;
+}
+
+.btn:hover {
+    background: #173d79;
+}
+
+#resultado {
+    display: none;
+    background: white;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 15px;
+    line-height: 1.8;
+}
+
+#resultado h2 {
+    color: #2457a7;
+    margin-bottom: 15px;
+}
+
+.paso {
+    margin: 12px 0;
+}
+
+footer {
+    background: #2457a7;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.alto-contraste {
+    background: black;
+    color: white;
+}
+
+.alto-contraste .tarjeta,
+.alto-contraste .bienvenida,
+.alto-contraste #resultado {
+    background: #151515;
+    color: white;
+}
+
+.alto-contraste h1,
+.alto-contraste h2,
+.alto-contraste h3 {
+    color: yellow;
+}
+
+@media(max-width: 750px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .bienvenida {
+        padding: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        ♿ INCLUYE <span>VES</span>
+        <div style="font-size:13px;font-weight:normal">
+            Trámites ciudadanos para todos
+        </div>
+    </div>
+
+    <div class="accesibilidad">
+        <button onclick="cambiarTexto(-1)">A-</button>
+        <button onclick="cambiarTexto(1)">A+</button>
+        <button onclick="contraste()">◐ Contraste</button>
+        <button onclick="leerPagina()">🔊 Escuchar</button>
+    </div>
+</header>
+
+<main class="contenedor">
+
+    <section class="bienvenida">
+        <h1>¡Bienvenido a INCLUYE VES!</h1>
+
+        <p>
+            Una plataforma diseñada para facilitar el acceso
+            a la información y orientación sobre trámites
+            ciudadanos para adultos mayores y personas
+            con discapacidad.
+        </p>
+
+        <p><strong>La tecnología debe estar al alcance de todos.</strong></p>
+
+        <button class="btn"
+        onclick="mostrarAyuda()">
+            Necesito ayuda
+        </button>
+    </section>
+
+    <h2 class="titulo">
+        ¿Qué trámite necesitas consultar?
+    </h2>
+
+    <section class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="icono">🪪</div>
+            <h3>Orientación sobre DNI</h3>
+            <p>
+                Conoce los pasos generales para consultar
+                información relacionada con tu DNI.
+            </p>
+            <button class="btn"
+            onclick="mostrarTramite('dni')">
+                Ver pasos
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <div class="icono">🏛️</div>
+            <h3>Trámites municipales</h3>
+            <p>
+                Encuentra orientación para realizar
+                consultas sobre servicios municipales.
+            </p>
+            <button class="btn"
+            onclick="mostrarTramite('municipal')">
+                Ver pasos
+            </button>
+        </article>
+
+        <article class="tarjeta">
+            <div class="icono">📅</div>
+            <h3>Solicitar una cita</h3>
+            <p>
+                Aprende cómo prepararte para solicitar
+                una cita en una entidad.
+            </p>
+            <button class="btn"
+            onclick="mostrarTramite('cita')">
+                Ver pasos
+            </button>
+        </article>
+
+    </section>
+
+    <section id="resultado" aria-live="polite">
+        <h2 id="tituloResultado"></h2>
+        <div id="contenidoResultado"></div>
+        <button class="btn" onclick="cerrarResultado()">
+            Cerrar
+        </button>
+    </section>
+
+    <section class="bienvenida" style="margin-top:30px">
+        <h2 class="titulo">Asistente virtual 🤖</h2>
+
+        <p>
+            ¿Necesitas orientación? Selecciona una opción.
+        </p>
+
+        <button class="btn"
+        onclick="asistente('lectura')">
+            No puedo leer bien
+        </button>
+
+        <button class="btn"
+        onclick="asistente('tramite')">
+            No entiendo un trámite
+        </button>
+
+        <button class="btn"
+        onclick="asistente('ayuda')">
+            Necesito ayuda personal
+        </button>
+
+        <p id="respuestaAsistente" style="margin-top:20px"></p>
+    </section>
+
+</main>
+
+<footer>
+    <p>INCLUYE VES | ODS 10</p>
+    <p>Reducción de las desigualdades</p>
+    <p>HackODS UA 2026</p>
+</footer>
+
+<script>
+
+
+let tamanio = 17;
+
+function cambiarTexto(valor) {
+    tamanio += valor;
+
+    if(tamanio < 14) tamanio = 14;
+    if(tamanio > 27) tamanio = 27;
+
+    document.body.style.fontSize = tamanio + "px";
+}
+
+function contraste() {
+    document.body.classList.toggle("alto-contraste");
+}
+
+
+function leerPagina() {
+    if (!("speechSynthesis" in window)) {
+        alert("Tu navegador no admite lectura por voz.");
+        return;
+    }
+
+    speechSynthesis.cancel();
+
+    let texto = document.querySelector("main").innerText;
+
+    let voz = new SpeechSynthesisUtterance(texto);
+
+    voz.lang = "es-PE";
+
+    speechSynthesis.speak(voz);
+}
+
+
+function mostrarTramite(tipo) {
+
+    let titulo = "";
+    let pasos = [];
+
+    if(tipo === "dni") {
+        titulo = "Orientación sobre DNI";
+
+        pasos = [
+            "Identifica qué trámite relacionado con tu DNI necesitas.",
+            "Consulta los requisitos en la página oficial de RENIEC.",
+            "Verifica si necesitas solicitar una cita.",
+            "Prepara los documentos indicados por la entidad."
+        ];
+    }
+
+    if(tipo === "municipal") {
+        titulo = "Trámites municipales";
+
+        pasos = [
+            "Identifica el trámite municipal que necesitas.",
+            "Consulta los canales oficiales de la Municipalidad de Villa El Salvador.",
+            "Verifica los requisitos, horarios y costos.",
+            "Sigue las indicaciones de la entidad."
+        ];
+    }
+
+    if(tipo === "cita") {
+        titulo = "Orientación para solicitar una cita";
+
+        pasos = [
+            "Identifica la institución donde necesitas atención.",
+            "Verifica si requiere una cita previa.",
+            "Consulta el canal oficial para solicitarla.",
+            "Guarda la fecha y hora de tu cita."
+        ];
+    }
+
+    document.getElementById("tituloResultado").innerText = titulo;
+
+    let contenido = "";
+
+    pasos.forEach((paso, i) => {
+        contenido += `
+            <p class="paso">
+                <strong>Paso ${i+1}:</strong> ${paso}
+            </p>
+        `;
+    });
+
+    contenido += `
+        <p><strong>Importante:</strong>
+        Esta es una guía orientativa. Confirma los requisitos
+        vigentes con la institución correspondiente.</p>
+    `;
+
+    document.getElementById("contenidoResultado").innerHTML = contenido;
+
+    document.getElementById("resultado").style.display = "block";
+
+    document.getElementById("resultado").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+
+function cerrarResultado() {
+    document.getElementById("resultado").style.display = "none";
+}
+
+
+function asistente(opcion) {
+
+    let respuesta = "";
+
+    if(opcion === "lectura") {
+        respuesta = "Puedes aumentar las letras con el botón A+ o escuchar la página con el botón de audio.";
+    }
+
+    if(opcion === "tramite") {
+        respuesta = "Selecciona una de las guías de trámites para recibir instrucciones paso a paso.";
+    }
+
+    if(opcion === "ayuda") {
+        respuesta = "Puedes pedir orientación a una persona de confianza o acudir a los canales oficiales de atención.";
+    }
+
+    document.getElementById("respuestaAsistente").innerText = respuesta;
+}
+
+
+
+function mostrarAyuda() {
+    document.getElementById("respuestaAsistente").innerText =
+    "¡Estamos para ayudarte! Selecciona una de las opciones del asistente virtual.";
+}
+
+</script>
+
+</body>
+</html
